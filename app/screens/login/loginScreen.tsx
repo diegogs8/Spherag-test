@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, Image, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { useLoginMutation } from '../../hooks/useAuthMutation';
-import { setAuthData } from '../../../infrastructure/store/authSlice';
+import { useLoginMutation } from '@hooks/useAuthMutation';
+import { setAuthData } from '@infrastructure/store/authSlice';
 import { styles } from './loginScreen.styles';
-import { CustomButton } from '../../components/customButton/customButton';
-import { CustomTextInput } from '../../components/customTextInput/customTextInput';
+import { CustomButton } from '@components/customButton/customButton';
+import { CustomTextInput } from '@components/customTextInput/customTextInput';
 
 export const LoginScreen = () => {
     const [username, setUsername] = useState('apppruebatecnica@spherag.com');
@@ -37,7 +37,11 @@ export const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Spherag</Text>
+            <Image 
+            source={require('@assets/spherag-title.png')} 
+            style={styles.titleImage}
+            resizeMode="contain"
+            />
 
             <CustomTextInput
                 label="Username"
