@@ -3,11 +3,13 @@ import { AuthResponse } from '../../domain/model/Auth';
 
 interface AuthState {
   accessToken: string | null;
+  refreshToken?: string | null;
   isAuthenticated: boolean;
 }
 
 const initialState: AuthState = {
   accessToken: null,
+  refreshToken: null,
   isAuthenticated: false,
 };
 
@@ -17,10 +19,12 @@ export const authSlice = createSlice({
   reducers: {
     setAuthData: (state, action: PayloadAction<AuthResponse>) => {
       state.accessToken = action.payload.accessToken.token;
+      state.refreshToken = action.payload.refreshToken.token;
       state.isAuthenticated = true;
     },
     logout: (state) => {
       state.accessToken = null;
+      state.refreshToken = null;
       state.isAuthenticated = false;
     },
   },

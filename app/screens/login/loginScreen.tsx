@@ -37,10 +37,10 @@ export const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Image 
-            source={require('@assets/spherag-title.png')} 
-            style={styles.titleImage}
-            resizeMode="contain"
+            <Image
+                source={require('@assets/spherag-title.png')}
+                style={styles.titleImage}
+                resizeMode="contain"
             />
 
             <CustomTextInput
