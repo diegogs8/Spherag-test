@@ -1,4 +1,4 @@
-import { useEstatesQuery } from '@hooks/useEstateQueries';
+import { useEstatesQuery } from '@hooks/useEstateQuery';
 import { useNavigation } from '@react-navigation/native';
 import { colors, spacing } from '@theme/theme';
 import { NavigationProps } from 'app/navigation/navigationTypes';
