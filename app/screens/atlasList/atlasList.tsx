@@ -1,4 +1,3 @@
-import { useAtlasesInfiniteQuery } from '@hooks/useAtlasQuery';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { colors } from '@theme/theme';
 import { NavigationProps, RootStackParamList } from 'app/navigation/navigationTypes';
@@ -6,12 +5,13 @@ import React from 'react';
 import { View, Text, ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { styles } from './atlasList.styles';
 import { AtlasItem } from '@components/atlasItem/atlasItem';
+import { useAtlasInfiniteQuery } from '@hooks/useAtlasQuery';
 
-type AtlasesScreenRouteProp = RouteProp<RootStackParamList, 'Atlases'>;
+type AtlasScreenRouteProp = RouteProp<RootStackParamList, 'Atlas'>;
 
 export const AtlasListScreen = () => {
 const navigation = useNavigation<NavigationProps>();
-  const route = useRoute<AtlasesScreenRouteProp>();
+  const route = useRoute<AtlasScreenRouteProp>();
   
   const { estateId } = route.params;
 
@@ -24,9 +24,9 @@ const navigation = useNavigation<NavigationProps>();
     isFetchingNextPage,
     refetch,
     isRefetching
-  } = useAtlasesInfiniteQuery(estateId);
+  } = useAtlasInfiniteQuery(estateId);
 
-  const atlases = data?.pages.flatMap((page) => page.items) || [];
+  const atlasList = data?.pages.flatMap((page: any) => page.items) || [];
 
   const handleNavigateToDetail = (imei: string) => {
     navigation.navigate('AtlasDetail', { estateId, imei });
@@ -50,7 +50,7 @@ const navigation = useNavigation<NavigationProps>();
     return (
       <View style={styles.centerContainer}>
         <Text style={styles.errorText}>
-          Something went wrong loading the Atlases. Please, try again later.
+          Something went wrong loading the Atlas. Please, try again later.
         </Text>
       </View>
     );
@@ -59,7 +59,7 @@ const navigation = useNavigation<NavigationProps>();
   return (
     <View style={styles.container}>
       <FlatList
-        data={atlases}
+        data={atlasList}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => (
@@ -69,7 +69,7 @@ const navigation = useNavigation<NavigationProps>();
         onEndReachedThreshold={0.5}
         ListEmptyComponent={
           <View style={styles.centerContainer}>
-            <Text style={styles.emptyText}>No Atlases found in this estate.</Text>
+            <Text style={styles.emptyText}>No Atlas found in this estate.</Text>
           </View>
         }
         ListFooterComponent={

@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    padding: spacing.m,
+    paddingHorizontal: spacing.m,
   },
   centerContainer: {
     flex: 1,
@@ -17,5 +17,15 @@ export const styles = StyleSheet.create({
     ...typography.body,
     color: colors.error,
     textAlign: 'center',
+  },
+  sectionTitle: {
+    ...typography.title,
+    marginHorizontal: spacing.m,
+  },
+  sectionLabel: {
+    ...typography.title,
+    fontSize: 18,
+    marginVertical: spacing.m,
+    color: colors.textPrimary,
   },
 });

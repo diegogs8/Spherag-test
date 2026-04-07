@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { globalStyles, spacing } from '@theme/theme';
+import { colors, globalStyles, spacing } from '@theme/theme';
 
 export const styles = StyleSheet.create({
   mapContainer: {
-    flex: 1,
-    marginTop: spacing.xs,
-    borderRadius: 12,
+    height: 350,
+    marginBottom: spacing.xxl,
+    borderRadius: 16,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: colors.border,
     ...globalStyles.shadow,
   },
   map: {

@@ -30,7 +30,7 @@ export const StateListScreen = () => {
     }, [navigation]);
 
     const handleNavigateToAtlas = (estateId: number) => {
-        navigation.navigate('Atlases', { estateId });
+        navigation.navigate('Atlas', { estateId });
     };
 
     const handleLogout = () => {

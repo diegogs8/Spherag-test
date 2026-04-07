@@ -1,10 +1,10 @@
-import { getAtlasDetail, getAtlases } from '@infrastructure/api/atlasApi';
+import { getAtlas, getAtlasDetail } from '@infrastructure/api/atlasApi';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
-export const useAtlasesInfiniteQuery = (estateId: number) => {
+export const useAtlasInfiniteQuery = (estateId: number) => {
   return useInfiniteQuery({
-    queryKey: ['atlases', estateId],
-    queryFn: ({ pageParam = 1 }) => getAtlases(estateId, pageParam),
+    queryKey: ['atlas', estateId],
+    queryFn: ({ pageParam = 1 }) => getAtlas(estateId, pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       if (lastPage.hasNextPage) {

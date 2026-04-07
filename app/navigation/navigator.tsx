@@ -30,7 +30,7 @@ export const Navigator = () => {
             options={{ title: 'Estates' }} 
           />
           <Stack.Screen 
-            name="Atlases" 
+            name="Atlas" 
             component={AtlasListScreen} 
             options={{ title: 'Atlas list' }} 
           />

@@ -1,7 +1,7 @@
 import { AtlasDetail, AtlasListItem, PaginatedResponse } from "@domain/model/Atlas";
 import { httpClient } from "@infrastructure/api/httpClient";
 
-export const getAtlases = async (
+export const getAtlas = async (
   estateId: number, 
   page: number = 1, 
   limit: number = 10
