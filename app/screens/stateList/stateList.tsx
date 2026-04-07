@@ -51,7 +51,7 @@ export const StateListScreen = () => {
         return (
             <View style={styles.centerContainer}>
                 <Text style={styles.errorText}>
-                    Oops! Something went wrong loading your estates.
+                    Something went wrong loading your estates. Please, try again later.
                 </Text>
             </View>
         );

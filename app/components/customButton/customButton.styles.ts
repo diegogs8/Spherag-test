@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: spacing.s,
-    minHeight: 48, 
+    minHeight: 48,
   },
   buttonDisabled: {
     backgroundColor: colors.border,

@@ -6,12 +6,12 @@ import { AtlasListItem } from '@domain/model/Atlas';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { styles } from './atlasItem.styles';
 
-interface AtlasCardProps {
+interface AtlasItemProps {
   atlas: AtlasListItem;
   onPress: (imei: string) => void;
 }
 
-export const AtlasItem = ({ atlas, onPress }: AtlasCardProps) => {
+export const AtlasItem = ({ atlas, onPress }: AtlasItemProps) => {
   return (
     <TouchableOpacity 
       style={styles.card} 

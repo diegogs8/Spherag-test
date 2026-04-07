@@ -6,12 +6,12 @@ import { Estate } from '@domain/model/Estate';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { styles } from './estateItem.styles';
 
-interface EstateCardProps {
+interface EstateItemProps {
     estate: Estate;
     onPress: (estateId: number) => void;
 }
 
-export const EstateItem = ({ estate, onPress }: EstateCardProps) => {
+export const EstateItem = ({ estate, onPress }: EstateItemProps) => {
     return (
         <TouchableOpacity
             style={styles.card}

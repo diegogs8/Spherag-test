@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  View, 
-  TextInput, 
-  Text, 
-  TouchableOpacity, 
-  TextInputProps 
+import {
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  TextInputProps
 } from 'react-native';
 import { colors } from '../../theme/theme';
 import { styles } from './customTextInput.styles';
@@ -55,7 +55,7 @@ export const CustomTextInput = ({
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
-      
+
       <View style={[styles.inputContainer, error && styles.inputContainerError]}>
         <TextInput
           style={[styles.input, style]}
@@ -63,7 +63,7 @@ export const CustomTextInput = ({
           {...getVariantProps()}
           {...rest}
         />
-        
+
         {isPassword && (
           <TouchableOpacity
             style={styles.iconButton}

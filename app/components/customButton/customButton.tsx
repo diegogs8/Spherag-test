@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-  TouchableOpacity, 
-  Text, 
-  ActivityIndicator, 
-  TouchableOpacityProps 
+import {
+  TouchableOpacity,
+  Text,
+  ActivityIndicator,
+  TouchableOpacityProps
 } from 'react-native';
 import { colors } from '../../theme/theme';
 import { styles } from './customButton.styles';
@@ -39,9 +39,9 @@ export const CustomButton = ({
       {isLoading ? (
         <ActivityIndicator color={colors.white} />
       ) : (
-        <Text 
+        <Text
           style={[
-            styles.text, 
+            styles.text,
             isFunctionallyDisabled && styles.textDisabled
           ]}
         >

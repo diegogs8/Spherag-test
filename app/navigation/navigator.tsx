@@ -32,12 +32,12 @@ export const Navigator = () => {
           <Stack.Screen 
             name="Atlases" 
             component={AtlasListScreen} 
-            options={{ title: 'Atlases' }} 
+            options={{ title: 'Atlas list' }} 
           />
           <Stack.Screen 
             name="AtlasDetail" 
             component={AtlasDetailScreen} 
-            options={{ title: 'Atlas Details' }} 
+            options={{ title: 'Atlas Detail' }} 
           />
         </>
       )}

@@ -1,5 +1,5 @@
-import { getAtlases } from '@infrastructure/api/atlasApi';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { getAtlasDetail, getAtlases } from '@infrastructure/api/atlasApi';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 export const useAtlasesInfiniteQuery = (estateId: number) => {
   return useInfiniteQuery({
@@ -12,5 +12,12 @@ export const useAtlasesInfiniteQuery = (estateId: number) => {
       }
       return undefined;
     },
+  });
+};
+
+export const useAtlasDetailQuery = (estateId: number, imei: string) => {
+  return useQuery({
+    queryKey: ['atlasDetail', estateId, imei],
+    queryFn: () => getAtlasDetail(estateId, imei),
   });
 };
