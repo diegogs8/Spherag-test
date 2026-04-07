@@ -50,7 +50,7 @@ const navigation = useNavigation<NavigationProps>();
     return (
       <View style={styles.centerContainer}>
         <Text style={styles.errorText}>
-          Oops! Something went wrong loading the Atlases.
+          Something went wrong loading the Atlases. Please, try again later.
         </Text>
       </View>
     );

@@ -14,7 +14,6 @@ export const StateListScreen = () => {
     const navigation = useNavigation<NavigationProps>();
     const dispatch = useDispatch();
 
-    const [isMenuVisible, setIsMenuVisible] = useState(false);
     const { data: estates, isLoading, isError, refetch, isRefetching } = useEstatesQuery();
 
     useLayoutEffect(() => {
@@ -35,7 +34,6 @@ export const StateListScreen = () => {
     };
 
     const handleLogout = () => {
-        setIsMenuVisible(false);
         dispatch(logout());
     };
 

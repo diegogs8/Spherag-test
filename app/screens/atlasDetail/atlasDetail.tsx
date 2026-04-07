@@ -6,16 +6,17 @@ import { RootStackParamList } from 'app/navigation/navigationTypes';
 import React from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { styles } from './atlasDetail.styles';
+import { CustomMap } from '@components/customMap/customMap';
 
 type AtlasDetailScreenRouteProp = RouteProp<RootStackParamList, 'AtlasDetail'>;
 
 export const AtlasDetailScreen = () => {
   const route = useRoute<AtlasDetailScreenRouteProp>();
-  
-  // Extract parameters passed from the Atlases list
+
   const { estateId, imei } = route.params;
 
   const { data: atlasDetail, isLoading, isError } = useAtlasDetailQuery(estateId, imei);
+  
 
   if (isLoading) {
     return (
@@ -29,20 +30,25 @@ export const AtlasDetailScreen = () => {
     return (
       <View style={styles.centerContainer}>
         <Text style={styles.errorText}>
-          Something went wrong loading the Atlas details. Please, try again later
+          Something went wrong loading the Atlas details. Please, try again later.
         </Text>
       </View>
     );
   }
 
+  const latitude = parseFloat(atlasDetail.latitude);
+  const longitude = parseFloat(atlasDetail.longitude);
+
   return (
     <View style={styles.container}>
       <AtlasInfoCard atlas={atlasDetail} />
 
-      {/* Map Placeholder - To be implemented next */}
-      <View style={styles.mapPlaceholder}>
-        <Text style={styles.mapPlaceholderText}>Map integration coming soon...</Text>
-      </View>
+      <CustomMap
+        latitude={latitude}
+        longitude={longitude}
+        markerTitle={atlasDetail.name}
+        markerDescription={`IMEI: ${atlasDetail.imei}`}
+      />
     </View>
   );
 };
