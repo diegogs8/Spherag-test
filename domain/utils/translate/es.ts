@@ -20,6 +20,8 @@ export default {
     enterEmailPlaceholder: 'Introduce tu correo electrónico',
     enterPasswordPlaceholder: 'Introduce tu contraseña',
     errorTitle: 'Error',
+    emptyUsername: 'El nombre de usuario no puede estar vacío.',
+    emptyPassword: 'La contraseña no puede estar vacía.',
   },
   atlasList: {
     atlasList: 'Listado de Atlas',

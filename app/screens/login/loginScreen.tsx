@@ -12,14 +12,31 @@ export const LoginScreen = () => {
     const { t } = useTranslation();
     const [username, setUsername] = useState('apppruebatecnica@spherag.com');
     const [password, setPassword] = useState('Usuario2026!');
+    
+    const [usernameError, setUsernameError] = useState<string>('');
+    const [passwordError, setPasswordError] = useState<string>('');
 
     const dispatch = useDispatch();
 
     const { mutate: login, isPending } = useLoginMutation();
 
     const handleLogin = () => {
-        if (!username || !password) {
-            Alert.alert(t('login.errorTitle'), t('errors.emptyCredentials'));
+        setUsernameError('');
+        setPasswordError('');
+
+        let hasError = false;
+
+        if (!username.trim()) {
+            setUsernameError(t('login.emptyUsername'));
+            hasError = true;
+        }
+
+        if (!password) {
+            setPasswordError(t('login.emptyPassword'));
+            hasError = true;
+        }
+
+        if (hasError) {
             return;
         }
 
@@ -37,6 +54,16 @@ export const LoginScreen = () => {
         );
     };
 
+    const handleUsernameChange = (text: string) => {
+        setUsername(text);
+        if (usernameError) setUsernameError('');
+    };
+
+    const handlePasswordChange = (text: string) => {
+        setPassword(text);
+        if (passwordError) setPasswordError('');
+    };
+
     return (
         <View style={styles.container}>
             <Image
@@ -50,7 +77,8 @@ export const LoginScreen = () => {
                 placeholder={t('login.enterEmailPlaceholder')}
                 variant="email"
                 value={username}
-                onChangeText={setUsername}
+                onChangeText={handleUsernameChange}
+                error={usernameError}
             />
 
             <CustomTextInput
@@ -58,7 +86,8 @@ export const LoginScreen = () => {
                 placeholder={t('login.enterPasswordPlaceholder')}
                 variant="password"
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={handlePasswordChange}
+                error={passwordError}
             />
 
             <CustomButton

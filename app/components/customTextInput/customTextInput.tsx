@@ -79,7 +79,12 @@ export const CustomTextInput = ({
         )}
       </View>
 
-      {error && <Text style={styles.errorText}>{error}</Text>}
+      {error ? (
+        <View style={styles.errorContainer}>
+          <Ionicons name="alert-circle" size={16} color={colors.error} />
+          <Text style={styles.errorText}>{error}</Text>
+        </View>
+      ) : null}
     </View>
   );
 };

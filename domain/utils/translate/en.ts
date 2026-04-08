@@ -22,6 +22,8 @@ export default {
     enterEmailPlaceholder: 'Enter your email',
     enterPasswordPlaceholder: 'Enter your password',
     errorTitle: 'Error',
+    emptyUsername: 'Username cannot be empty.',
+    emptyPassword: 'Password cannot be empty.',
   },
   atlasList: {
     atlasList: 'Atlas list',

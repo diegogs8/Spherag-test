@@ -39,4 +39,9 @@ export const styles = StyleSheet.create({
     color: colors.error,
     marginTop: spacing.xs,
   },
+  errorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: spacing.xs,
+  },
 });
