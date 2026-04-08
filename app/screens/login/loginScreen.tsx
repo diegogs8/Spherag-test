@@ -7,6 +7,7 @@ import { setAuthData } from '@infrastructure/store/authSlice';
 import { styles } from './loginScreen.styles';
 import { CustomButton } from '@components/customButton/customButton';
 import { CustomTextInput } from '@components/customTextInput/customTextInput';
+import { saveTokens } from '@infrastructure/store/secureStorage';
 
 export const LoginScreen = () => {
     const { t } = useTranslation();
@@ -43,7 +44,8 @@ export const LoginScreen = () => {
         login(
             { username, password },
             {
-                onSuccess: (data) => {
+                onSuccess: async (data) => {
+                    await saveTokens(data.accessToken.token, data.refreshToken.token);
                     dispatch(setAuthData(data));
                 },
                 onError: (error) => {

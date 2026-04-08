@@ -10,6 +10,7 @@ import { EstateItem } from '@components/estateItem/estateItem';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { logout } from '@infrastructure/store/authSlice';
 import { useDispatch } from 'react-redux';
+import { clearTokens } from '@infrastructure/store/secureStorage';
 
 export const StateListScreen = () => {
     const { t } = useTranslation();
@@ -35,7 +36,8 @@ export const StateListScreen = () => {
         navigation.navigate('Atlas', { estateId });
     };
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        await clearTokens();
         dispatch(logout());
     };
 
