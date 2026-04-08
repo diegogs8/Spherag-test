@@ -1,4 +1,7 @@
 export default {
+  common: {
+    loading: 'Cargando datos, por favor espera...',
+  },
   atlas: {
     atlasDetail: 'Detalle de Atlas',
     imeiLabel: 'IMEI: {{imei}}',

@@ -17,7 +17,10 @@ export const EstateItem = ({ estate, onPress }: EstateItemProps) => {
 
     return (
         <TouchableOpacity
-            style={styles.card}
+            style={[
+                styles.card, 
+                estate.favourite && styles.cardFavourite
+            ]}
             onPress={() => onPress(estate.id)}
             activeOpacity={0.7}
         >

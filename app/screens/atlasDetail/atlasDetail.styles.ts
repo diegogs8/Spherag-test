@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: spacing.l,
+    gap: spacing.m,
   },
   errorText: {
     ...typography.body,

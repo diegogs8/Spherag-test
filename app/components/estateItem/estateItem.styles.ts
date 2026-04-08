@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         ...globalStyles.shadow,
+        borderWidth: 1.5,
+        borderColor: 'transparent',
+    },
+    cardFavourite: {
+        borderColor: colors.favorite,
     },
     infoContainer: {
         flex: 1,

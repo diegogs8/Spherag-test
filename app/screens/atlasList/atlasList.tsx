@@ -44,6 +44,7 @@ export const AtlasListScreen = () => {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color={colors.primary} />
+        <Text>{t('common.loading')}</Text>
       </View>
     );
   }
