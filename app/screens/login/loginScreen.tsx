@@ -11,8 +11,8 @@ import { saveTokens } from '@infrastructure/store/secureStorage';
 
 export const LoginScreen = () => {
     const { t } = useTranslation();
-    const [username, setUsername] = useState('apppruebatecnica@spherag.com');
-    const [password, setPassword] = useState('Usuario2026!');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     
     const [usernameError, setUsernameError] = useState<string>('');
     const [passwordError, setPasswordError] = useState<string>('');
