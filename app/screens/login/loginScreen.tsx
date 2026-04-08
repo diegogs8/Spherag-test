@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, Alert } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '@hooks/useAuthMutation';
 import { setAuthData } from '@infrastructure/store/authSlice';
@@ -8,6 +9,7 @@ import { CustomButton } from '@components/customButton/customButton';
 import { CustomTextInput } from '@components/customTextInput/customTextInput';
 
 export const LoginScreen = () => {
+    const { t } = useTranslation();
     const [username, setUsername] = useState('apppruebatecnica@spherag.com');
     const [password, setPassword] = useState('Usuario2026!');
 
@@ -17,7 +19,7 @@ export const LoginScreen = () => {
 
     const handleLogin = () => {
         if (!username || !password) {
-            Alert.alert('Error', 'Please enter both username and password.');
+            Alert.alert(t('login.errorTitle'), t('errors.emptyCredentials'));
             return;
         }
 
@@ -29,7 +31,7 @@ export const LoginScreen = () => {
                 },
                 onError: (error) => {
                     console.error(error);
-                    Alert.alert('Login Failed', 'Please check your credentials and try again.');
+                    Alert.alert(t('login.errorTitle'), t('errors.loginFailed'));
                 }
             }
         );
@@ -44,23 +46,23 @@ export const LoginScreen = () => {
             />
 
             <CustomTextInput
-                label="Username"
-                placeholder="Enter your email"
+                label={t('login.username')}
+                placeholder={t('login.enterEmailPlaceholder')}
                 variant="email"
                 value={username}
                 onChangeText={setUsername}
             />
 
             <CustomTextInput
-                label="Password"
-                placeholder="Enter your password"
+                label={t('login.password')}
+                placeholder={t('login.enterPasswordPlaceholder')}
                 variant="password"
                 value={password}
                 onChangeText={setPassword}
             />
 
             <CustomButton
-                title="Sign In"
+                title={t('login.signIn')}
                 onPress={handleLogin}
                 isLoading={isPending}
             />

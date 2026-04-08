@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { formatDate } from '@domain/utils/dateUtils';
 import { colors } from '@theme/theme';
 import { Estate } from '@domain/model/Estate';
@@ -12,6 +13,8 @@ interface EstateItemProps {
 }
 
 export const EstateItem = ({ estate, onPress }: EstateItemProps) => {
+    const { t } = useTranslation();
+
     return (
         <TouchableOpacity
             style={styles.card}
@@ -25,7 +28,7 @@ export const EstateItem = ({ estate, onPress }: EstateItemProps) => {
                 <View style={styles.dateContainer}>
                     <Ionicons name="calendar-outline" size={14} color={colors.textSecondary} />
                     <Text style={styles.dateText}>
-                        Created: {formatDate(estate.createdDate)}
+                        {t('estate.created', { date: formatDate(estate.createdDate) })}
                     </Text>
                 </View>
             </View>

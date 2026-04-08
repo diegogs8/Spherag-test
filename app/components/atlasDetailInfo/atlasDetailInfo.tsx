@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors } from '@theme/theme';
 import { AtlasDetail } from '@domain/model/Atlas';
 import Ionicons from '@react-native-vector-icons/ionicons';
@@ -10,13 +11,17 @@ interface AtlasDetailInfoProps {
 }
 
 export const AtlasDetailInfo = ({ atlas }: AtlasDetailInfoProps) => {
+  const { t } = useTranslation();
+
   return (
 <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title} numberOfLines={2}>
           {atlas.name}
         </Text>
-        <Text style={styles.subtitle}>IMEI: {atlas.imei}</Text>
+        <Text style={styles.subtitle}>
+          {t('atlas.imeiLabel', { imei: atlas.imei })}
+        </Text>
       </View>
 
       <View style={styles.statsContainer}>

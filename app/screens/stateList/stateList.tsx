@@ -1,5 +1,6 @@
 import { useEstatesQuery } from '@hooks/useEstateQuery';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@theme/theme';
 import { NavigationProps } from 'app/navigation/navigationTypes';
 import React, { useLayoutEffect, useState } from 'react';
@@ -11,6 +12,7 @@ import { logout } from '@infrastructure/store/authSlice';
 import { useDispatch } from 'react-redux';
 
 export const StateListScreen = () => {
+    const { t } = useTranslation();
     const navigation = useNavigation<NavigationProps>();
     const dispatch = useDispatch();
 
@@ -49,7 +51,7 @@ export const StateListScreen = () => {
         return (
             <View style={styles.centerContainer}>
                 <Text style={styles.errorText}>
-                    Something went wrong loading your estates. Please, try again later.
+                    {t('errors.estates')}
                 </Text>
             </View>
         );
@@ -66,7 +68,7 @@ export const StateListScreen = () => {
                 )}
                 ListEmptyComponent={
                     <View style={styles.centerContainer}>
-                        <Text style={styles.emptyText}>No estates found.</Text>
+                        <Text style={styles.emptyText}>{t('estateList.noEstatesFound')}</Text>
                     </View>
                 }
                 refreshControl={

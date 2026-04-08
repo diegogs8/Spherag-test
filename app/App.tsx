@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../infrastructure/store/store';
-import { Navigator } from './navigation/navigator'
+import { Navigator } from './navigation/navigator';
+import '@domain/utils/translate/i18n';
 
 const queryClient = new QueryClient({
   defaultOptions: {

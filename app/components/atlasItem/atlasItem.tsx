@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { formatDate } from '@domain/utils/dateUtils';
 import { colors } from '@theme/theme';
 import { AtlasListItem } from '@domain/model/Atlas';
@@ -12,6 +13,8 @@ interface AtlasItemProps {
 }
 
 export const AtlasItem = ({ atlas, onPress }: AtlasItemProps) => {
+  const { t } = useTranslation();
+
   return (
     <TouchableOpacity 
       style={styles.card} 
@@ -20,13 +23,15 @@ export const AtlasItem = ({ atlas, onPress }: AtlasItemProps) => {
     >
       <View style={styles.headerRow}>
         <Text style={styles.name} numberOfLines={1}>{atlas.name}</Text>
-        <Text style={styles.imeiText}>IMEI: {atlas.imei}</Text>
+        <Text style={styles.imeiText}>
+          {t('atlas.imeiLabel', { imei: atlas.imei })}
+        </Text>
       </View>
 
       <View style={styles.dateContainer}>
         <Ionicons name="time-outline" size={16} color={colors.textSecondary} />
         <Text style={styles.dateText}>
-          Expires: {formatDate(atlas.expiredDate)}
+          {t('atlas.expires', { date: formatDate(atlas.expiredDate) })}
         </Text>
       </View>
 

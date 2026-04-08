@@ -1,5 +1,6 @@
 import { useAtlasDetailQuery } from '@hooks/useAtlasQuery';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { colors } from '@theme/theme';
 import { RootStackParamList } from 'app/navigation/navigationTypes';
 import React from 'react';
@@ -11,6 +12,7 @@ import { AtlasDetailInfo } from '@components/atlasDetailInfo/atlasDetailInfo';
 type AtlasDetailScreenRouteProp = RouteProp<RootStackParamList, 'AtlasDetail'>;
 
 export const AtlasDetailScreen = () => {
+  const { t } = useTranslation();
   const route = useRoute<AtlasDetailScreenRouteProp>();
 
   const { estateId, imei } = route.params;
@@ -30,7 +32,7 @@ export const AtlasDetailScreen = () => {
     return (
       <View style={styles.centerContainer}>
         <Text style={styles.errorText}>
-          Something went wrong loading the Atlas details. Please, try again later.
+          {t('errors.atlasDetail')}
         </Text>
       </View>
     );
@@ -47,7 +49,7 @@ export const AtlasDetailScreen = () => {
     >
       <AtlasDetailInfo atlas={atlasDetail} />
 
-      <Text style={styles.sectionLabel}>Device Location</Text>
+      <Text style={styles.sectionLabel}>{t('atlas.deviceLocation')}</Text>
 
       <CustomMap
         latitude={latitude}
